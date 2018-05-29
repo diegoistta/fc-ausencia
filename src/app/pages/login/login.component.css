@@ -1,0 +1,29 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  .signin-content {
+    padding: 60px 1rem;
+  }
+  .full-width-input {
+    width: 80%;
+  }
+  .mat-raised-button{
+    min-width: 150px !important;
+  }
+  .titulo{
+    font-family: 'Raleway';
+    font-size: 30px;
+    color:#4C4C4C;
+  }
+  .subtitulo{
+    font-family: 'Meera Inimai';
+    font-size: 16px;
+    color:#4C4C4C;
+  }
+     
+  .mat-card-header{
+    background-color: #4C4C4C
+  }
+  

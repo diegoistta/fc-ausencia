@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto Condensed|Source Sans Pro|Meera Inimai|Raleway');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './styles.custom-theme.scss';
+
+html, body {
+    height: 100%;
+    background: #EFEEF4; }
+
+.content-title{
+    position: fixed; 
+    background: #36414F;
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.main-body {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 100px;
+}

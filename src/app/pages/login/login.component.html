@@ -1,0 +1,36 @@
+
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <br><br>
+        <img src="../../assets/images/logoFolhaCera_login.jpg" width="290" style="margin-right: 22px">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      
+        <br><br>
+        <div class="titulo">Login</div>
+        <br>
+        <br><br>
+        <!-- <div class="subtitulo">Módulo Administrativo de Ausências Laborais</div>
+        <br><br> -->
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="isFieldInvalid('email')">
+            Por favor, informe o email
+          </mat-error>
+         </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Senha" formControlName="senha">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="isFieldInvalid('senha')">
+            Por favor, informe a senha
+          </mat-error>
+        </mat-form-field>
+        <br/><br/>
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

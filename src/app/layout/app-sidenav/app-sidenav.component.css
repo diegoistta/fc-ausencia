@@ -1,0 +1,23 @@
+.sidenav-container {
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    /* background: #EEEEEE; */
+    height: 100%;
+    flex: 1 0 auto;
+  }
+  
+  .sidenav {
+    width: 250px;
+    top: 60px;
+    position: fixed;
+    box-shadow: 3px 0 6px rgba(0,0,0,.24);
+  }
+  
+  .mainha-body {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+}
