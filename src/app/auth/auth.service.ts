@@ -13,7 +13,6 @@ import { AppConfig } from '../app.config';
 @Injectable()
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-  teste: any;
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }

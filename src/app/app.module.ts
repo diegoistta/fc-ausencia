@@ -16,9 +16,10 @@ import { AppHeaderComponent } from './layout/app-header/app-header.component';
 import { AppSidenavComponent } from './layout/app-sidenav/app-sidenav.component';
 import { AppSidenavService } from 'src/app/layout/app-sidenav/app-sidenav.service';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
-import { AuthService } from "./auth/auth.service";
-import { AuthGuard } from "./auth/auth.guard";
-import { AppConfig } from "./app.config";
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
+import { AppConfig } from './app.config';
+import { JwtInterceptor } from './auth/auth.jwt.interceptor';
 
 
 @NgModule({
@@ -39,7 +40,18 @@ import { AppConfig } from "./app.config";
     AppMaterialModule,
     HttpClientModule,
   ],
-  providers: [AppSidenavService, AuthService, AuthGuard, AuthLoginGuard, AppConfig],
+  providers: [
+    AppSidenavService,
+    AuthService,
+    AuthGuard,
+    AuthLoginGuard,
+    AppConfig,
+     {
+        provide: HTTP_INTERCEPTORS,
+        useClass: JwtInterceptor,
+        multi: true
+    }
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
