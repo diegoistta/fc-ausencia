@@ -1,4 +1,4 @@
-import { Usuario } from './../app-model/usuario';
+import { Usuario } from '@app/_model/usuario';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -11,7 +11,7 @@ import { AppConfig } from '../app.config';
 
 
 @Injectable()
-export class AuthService {
+export class LoginService {
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
   get isLoggedIn() {
     return this.loggedIn.asObservable();

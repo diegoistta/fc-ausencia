@@ -1,7 +1,7 @@
 import { Component, OnInit, NgModule, Directive } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AuthService } from "../../auth/auth.service";
+import { LoginService } from '@app/_services/login.service';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.authService.login(this.form.value).pipe(first())
+      this.loginService.login(this.form.value).pipe(first())
       .subscribe(
           data => {
               this.router.navigate([this.returnUrl]);

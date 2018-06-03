@@ -1,50 +1,61 @@
-import { AuthLoginGuard } from './auth/auth.login.guard';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { AppMaterialModule } from './app-material/app-material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { LoginComponent } from './pages/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AppHeaderComponent } from './layout/app-header/app-header.component';
-import { AppSidenavComponent } from './layout/app-sidenav/app-sidenav.component';
-import { AppSidenavService } from 'src/app/layout/app-sidenav/app-sidenav.service';
-import { CategoriasComponent } from './pages/categorias/categorias.component';
-import { AuthService } from './auth/auth.service';
-import { AuthGuard } from './auth/auth.guard';
-import { AppConfig } from './app.config';
-import { JwtInterceptor } from './auth/auth.jwt.interceptor';
+import { MaterialModule } from '@app/_material/material.module';
+import { AppRoutingModule } from '@app/_routes/app-routing.module';
+import { MomentModule } from 'ngx-moment';
 
+import { AppComponent } from '@app/app.component';
+import { LoginComponent } from '@app/pages/login/login.component';
+import { MainComponent } from '@app/layout/main/main.component';
+import { DashboardComponent } from '@app/pages/dashboard/dashboard.component';
+import { HeaderComponent } from '@app/layout/header/header.component';
+import { SidenavComponent } from '@app/layout/sidenav/sidenav.component';
+import { CategoriasComponent } from '@app/pages/categorias/categorias.component';
+import { ModalComponent } from '@app/layout/modal/modal.component';
+
+import { SidenavService } from '@app/_services/sidenav.service';
+import { LoginService } from '@app/_services/login.service';
+import { CategoriaService } from '@app/_services/categoria.service';
+import { ModalService } from "@app/_services/modal.service";
+
+import { AuthGuard } from '@app/_guards/auth.guard';
+import { LoggedGuard } from '@app/_guards/logged.guard';
+import { JwtInterceptor } from '@app/_interceptors/auth.jwt.interceptor';
+
+import { AppConfig } from '@app/app.config';
+import 'moment/locale/pt-br';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AppLayoutComponent,
+    MainComponent,
     DashboardComponent,
-    AppHeaderComponent,
-    AppSidenavComponent,
-    CategoriasComponent
+    HeaderComponent,
+    SidenavComponent,
+    CategoriasComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AppMaterialModule,
+    MaterialModule,
     HttpClientModule,
+    MomentModule
   ],
   providers: [
-    AppSidenavService,
-    AuthService,
+    SidenavService,
+    LoginService,
+    CategoriaService,
+    ModalService,
     AuthGuard,
-    AuthLoginGuard,
+    LoggedGuard,
     AppConfig,
      {
         provide: HTTP_INTERCEPTORS,

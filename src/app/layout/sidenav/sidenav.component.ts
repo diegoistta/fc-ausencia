@@ -1,13 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { AppSidenavService } from './app-sidenav.service';
+import { SidenavService } from '@app/_services/sidenav.service';
 import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-sidenav',
-  templateUrl: './app-sidenav.component.html',
-  styleUrls: ['./app-sidenav.component.css']
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.css']
 })
-export class AppSidenavComponent {
+export class SidenavComponent {
 
   @ViewChild('sidenav') public sidenav: MatSidenav;
   folders = [
@@ -29,7 +29,7 @@ export class AppSidenavComponent {
     }
   ];
 
-  constructor(private sidenavService: AppSidenavService) {	}
+  constructor(private sidenavService: SidenavService) {	}
 
   ngOnInit(): void {
     this.sidenavService.setSidenav(this.sidenav);

@@ -1,5 +1,6 @@
 export interface Categoria {
     id: number;
     nome: string;
-    descricao: string;
+    dataCriacao: any;
+    dataAlteracao: any;
 }

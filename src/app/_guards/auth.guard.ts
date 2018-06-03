@@ -3,18 +3,18 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-import { AuthService } from './auth.service';
+import { LoginService } from '@app/_services/login.service';
 
 @Injectable()
-export class AuthLoginGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) { }
+export class AuthGuard implements CanActivate {
+  constructor(private authService: LoginService, private router: Router) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authService.isLoggedIn.pipe(
       take(1),
       map((isLoggedIn: boolean) => {
-        if (isLoggedIn) {
-          this.router.navigate(['']);
+        if (!isLoggedIn) {
+          this.router.navigate(['/login']);
           return false;
         }
         return true;

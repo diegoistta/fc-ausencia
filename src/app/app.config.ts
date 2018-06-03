@@ -1,3 +1,3 @@
 export class AppConfig {
-    public readonly apiUrl = 'https://api.folhacerta.com';
+    public readonly apiUrl = 'http://localhost:5000';
 }

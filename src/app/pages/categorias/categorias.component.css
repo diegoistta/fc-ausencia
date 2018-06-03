@@ -10,3 +10,12 @@ table {
   td, th {
     width: 25%;
   }
+  
+  .main-column {
+      width: 40%;
+  }
+
+  .opcoes-column {
+    width: 100%;
+    text-align: center;
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 
 @Injectable()
-export class AppSidenavService {
+export class SidenavService {
   private sidenav: MatSidenav;
 
   public setSidenav(sidenav: MatSidenav) {
