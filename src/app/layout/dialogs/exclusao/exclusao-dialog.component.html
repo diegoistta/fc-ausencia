@@ -1,0 +1,15 @@
+<mat-toolbar color='accent'>
+   <span class="title-center">
+       <mat-icon>report_problem</mat-icon>
+    </span>
+</mat-toolbar>
+<mat-dialog-content>
+ <div class="titulo"> Atenção! </div>
+ <div class="sub-titulo"> O registro será excluído da base de dados. Deseja prosseguir? </div>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button class="mat-raised-button"(click)="close()">Cancelar</button>
+    <button class="mat-raised-button mat-accent"(click)="save()">Sim, excluir!</button>
+</mat-dialog-actions>

@@ -19,3 +19,7 @@ table {
     width: 100%;
     text-align: center;
 }
+mat-spinner {
+  margin:0 auto;
+}
+

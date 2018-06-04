@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
 import { Categoria } from '@app/_model/categoria';
 
 import { ElementRef } from "@angular/core";
@@ -9,7 +9,7 @@ import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/op
 import { Inject } from "@angular/core";
 
 import { CategoriaService } from '@app/_services/categoria.service';
-import { ModalService } from "@app/_services/modal.service";
+import { ExclusaoDialogComponent } from "@app/layout/dialogs/exclusao/exclusao-dialog.component";
 
 @Component({
   selector: 'app-categorias',
@@ -23,7 +23,6 @@ export class CategoriasComponent implements OnInit {
   categoria: string;
 
   displayedColumns = [ 'nome','dataCriacao','dataAlteracao', 'opcoes'];
-
   searchColumns = ['nome'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -31,7 +30,6 @@ export class CategoriasComponent implements OnInit {
   @ViewChild('input') input: ElementRef;
 
   constructor(private categoriaService: CategoriaService, 
-    private modalService: ModalService,
     public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -39,9 +37,9 @@ export class CategoriasComponent implements OnInit {
     this.dataSource = new CategoriaDataSource(this.categoriaService);
 
     this.dataSource.getCategorias('', ['nome'], ['nome','asc'], 0, this.paginator.pageSize);
-}
+  }
 
-ngAfterViewInit() {
+  ngAfterViewInit() {
 
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -59,22 +57,32 @@ ngAfterViewInit() {
     merge(this.sort.sortChange, this.paginator.page)
     .pipe(
         tap(() => this.loadCategoriasPage())
-    )
-    .subscribe();
+    ).subscribe();
+  }
 
-}
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
 
-openModal(id: string) {
-  this.modalService.open(id);
-}
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    dialogConfig.panelClass = 'modal-warning'
 
-loadCategoriasPage() {
-  this.dataSource.getCategorias(
-      this.input.nativeElement.value,
-      this.searchColumns,
-      [ this.sort.active, this.sort.direction],
-      this.paginator.pageIndex,
-      this.paginator.pageSize);
-}
+    dialogConfig.data = {
+        id: 1,
+        description: 'Antenção!',
+    };
+
+    this.dialog.open(ExclusaoDialogComponent, dialogConfig);
+  }
+
+  loadCategoriasPage() {
+    this.dataSource.getCategorias(
+        this.input.nativeElement.value,
+        this.searchColumns,
+        [ this.sort.active, this.sort.direction],
+        this.paginator.pageIndex,
+        this.paginator.pageSize);
+  }
 
 }

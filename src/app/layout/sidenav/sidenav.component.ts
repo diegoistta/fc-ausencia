@@ -22,11 +22,11 @@ export class SidenavComponent {
       link: ['/categorias']
       
     },
-    {
-      name: 'Tipos de Afastamento',
-      icon: 'insert_invitation',
-      link: ['/tiposafastamento']
-    }
+    // {
+    //   name: 'Tipos de Afastamento',
+    //   icon: 'insert_invitation',
+    //   link: ['/tiposafastamento']
+    // }
   ];
 
   constructor(private sidenavService: SidenavService) {	}

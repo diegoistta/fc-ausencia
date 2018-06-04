@@ -9,7 +9,7 @@
   </mat-form-field>
 
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
-    <mat-spinner></mat-spinner>
+    <mat-spinner style="margin:0 auto;"></mat-spinner>
   </div>
 
   <div class="mat-elevation-z8">
@@ -47,7 +47,7 @@
             <button mat-icon-button matTooltip="Editar" (click)="onRowClicked(row)">
               <mat-icon>create</mat-icon>
             </button>
-            <button mat-icon-button matTooltip="Excluir" (click)="openModal('custom-modal-1')">
+            <button mat-icon-button matTooltip="Excluir" (click)="openDialog()">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
@@ -61,18 +61,5 @@
 
     <mat-paginator [length]="dataSource.totalRecords" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-
-  <jw-modal id="custom-modal-1">
-    <div class="modal">
-      <div class="modal-body">
-        <h1>A Custom Modal!</h1>
-        <p>
-          Home page text:
-        </p>
-        <button (click)="closeModal('custom-modal-1');">Close</button>
-      </div>
-    </div>
-    <div class="modal-background"></div>
-  </jw-modal>
 
 </div>

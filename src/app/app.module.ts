@@ -15,12 +15,11 @@ import { DashboardComponent } from '@app/pages/dashboard/dashboard.component';
 import { HeaderComponent } from '@app/layout/header/header.component';
 import { SidenavComponent } from '@app/layout/sidenav/sidenav.component';
 import { CategoriasComponent } from '@app/pages/categorias/categorias.component';
-import { ModalComponent } from '@app/layout/modal/modal.component';
+import { ExclusaoDialogComponent } from '@app/layout/dialogs/exclusao/exclusao-dialog.component';
 
 import { SidenavService } from '@app/_services/sidenav.service';
 import { LoginService } from '@app/_services/login.service';
 import { CategoriaService } from '@app/_services/categoria.service';
-import { ModalService } from "@app/_services/modal.service";
 
 import { AuthGuard } from '@app/_guards/auth.guard';
 import { LoggedGuard } from '@app/_guards/logged.guard';
@@ -38,7 +37,7 @@ import 'moment/locale/pt-br';
     HeaderComponent,
     SidenavComponent,
     CategoriasComponent,
-    ModalComponent
+    ExclusaoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +52,6 @@ import 'moment/locale/pt-br';
     SidenavService,
     LoginService,
     CategoriaService,
-    ModalService,
     AuthGuard,
     LoggedGuard,
     AppConfig,
@@ -63,6 +61,7 @@ import 'moment/locale/pt-br';
         multi: true
     }
    ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ExclusaoDialogComponent]
 })
 export class AppModule { }
