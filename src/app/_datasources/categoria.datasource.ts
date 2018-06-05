@@ -1,5 +1,5 @@
 import { of } from 'rxjs/observable/of';
-import {CollectionViewer, DataSource} from "@angular/cdk/collections";
+import {CollectionViewer, DataSource} from '@angular/cdk/collections';
 import { catchError, finalize } from 'rxjs/operators';
 import { CategoriaService } from '@app/_services/categoria.service';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -22,28 +22,29 @@ export class CategoriaDataSource implements DataSource<Categoria> {
     }
 
     getCategorias(
-                search:string,
+                search: string,
                 columns: string[],
-                sort:string[],
-                pageIndex:number,
-                pageSize:number) {
+                sortColumn: string,
+                sortDirection: string,
+                pageIndex: number,
+                pageSize: number) {
 
         this.loadingSubject.next(true);
 
-        this.categoriaService.getCategorias(search, columns,sort,
+        this.categoriaService.getCategorias(search, columns, sortColumn, sortDirection
             pageIndex, pageSize).pipe(
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
             )
             .subscribe((x: any) => {
-                this.categoriaSubject.next(x.tableData); 
-                this.totalRecords = x.totalRecords; 
+                this.categoriaSubject.next(x.tableData);
+                this.totalRecords = x.totalRecords;
             });
 
     }
 
     connect(collectionViewer: CollectionViewer): Observable<Categoria[]> {
-        console.log("Connecting data source");
+        console.log('Connecting data source');
         return this.categoriaSubject.asObservable();
     }
 

@@ -12,14 +12,22 @@ export class CategoriaService {
 
   constructor(private http: HttpClient, private config: AppConfig) { }
 
-  getCategorias(search = '', columns = ['Nome'],  sort = ['Nome','asc'],
-  pageNumber = 0, pageSize = 5) : Observable<Categoria[]>  {
-    return this.http.post(this.config.apiUrl + '/data-table-categorias', {
-      search, 
-      columns, 
-       sort, 
-       pageNumber, 
-       pageSize }).pipe(map((res:any) => res.data));
+  getCategorias(search = '', columns = ['Nome'], sortColumn = 'Nome', sortDirection = 'asc',
+      pageNumber = 0, pageSize = 5): Observable<Categoria[]> {
+        return this.http.post(this.config.apiUrl + '/data-table-categorias',
+                              {
+                                 search,
+                                 columns,
+                                 sortColumn,
+                                 sortDirection,
+                                 pageNumber,
+                                 pageSize
+                              }
+                            ).pipe(map((res: any) => res.data));
   }
 
+  deleteCategoria(id = 0): Observable<any> {
+    return this.http.delete(this.config.apiUrl + '/delete-categoria?id=' + id)
+    .pipe(map((res: any) => res));
+  }
 }
