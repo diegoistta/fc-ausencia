@@ -31,7 +31,7 @@ export class CategoriaDataSource implements DataSource<Categoria> {
 
         this.loadingSubject.next(true);
 
-        this.categoriaService.getCategorias(search, columns, sortColumn, sortDirection
+        this.categoriaService.getCategorias(search, columns, sortColumn, sortDirection,
             pageIndex, pageSize).pipe(
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
