@@ -32,8 +32,12 @@ export class CategoriaService {
         .pipe(map((res: any) => res.data));
   }
 
-  deleteCategoria(id = 0): Observable<any> {
-    return this.http.delete(this.config.apiUrl + 'categoria/?id=' + id)
+  deleteCategoria(id): Observable<any> {
+
+    const params = new HttpParams()
+        .set('id', id);
+
+    return this.http.delete(this.config.apiUrl + '/categoria', { params })
     .pipe(map((res: any) => res));
   }
 }

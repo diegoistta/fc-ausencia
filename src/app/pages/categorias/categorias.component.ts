@@ -5,7 +5,7 @@ import { Categoria } from '@app/_model/categoria';
 import { ElementRef } from '@angular/core';
 import { CategoriaDataSource } from '@app/_datasources/categoria.datasource';
 import { fromEvent, merge } from 'rxjs';
-import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, startWith, tap, delay, catchError } from 'rxjs/operators';
 import { Inject } from '@angular/core';
 
 import { CategoriaService } from '@app/_services/categoria.service';
@@ -74,7 +74,9 @@ export class CategoriasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: any) => {
           if (data) {
-            console.log(row['id']);
+           this.categoriaService.deleteCategoria(row['id']).pipe(
+              tap(() => this.loadCategoriasPage())
+           ).subscribe();
         }
       }
     );
