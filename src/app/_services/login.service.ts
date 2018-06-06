@@ -20,16 +20,18 @@ export class LoginService {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private config: AppConfig
+    private config: AppConfig,
   ) {}
 
   login(user: Usuario) {
-    return this.http.post<any>(this.config.apiUrl + '/logon', { email: user.email, senha: user.senha }).pipe(
-        map((res: any) => {
-           if (res && res.accessToken) {
-             localStorage.setItem('currentUser', JSON.stringify({ usuario: res.data, token: res.accessToken }));
-             this.loggedIn.next(true);
-        }
+
+    return this.http.post<any>(this.config.apiUrl + '/autorizacao', { email: user.email, senha: user.senha })
+    .pipe(
+            map((res: any) => {
+                    if (res && res.accessToken) {
+                      localStorage.setItem('currentUser', JSON.stringify({ usuario: res.data, token: res.accessToken }));
+                      this.loggedIn.next(true);
+              }
           }));
       }
 

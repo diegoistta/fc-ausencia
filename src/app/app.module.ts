@@ -28,6 +28,7 @@ import { JwtInterceptor } from '@app/_interceptors/auth.jwt.interceptor';
 import { AppConfig } from '@app/app.config';
 import 'moment/locale/pt-br';
 
+
 @NgModule({
   declarations: [
     AppComponent,
