@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{descricao}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+  
+    <mat-form-field style="width:100%;">
+        <input matInput placeholder="Categoria" formControlName="nome">
+    </mat-form-field>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Cancelar</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Salvar</button>
+</mat-dialog-actions>

@@ -1,0 +1,54 @@
+
+ .modal-warning .mat-form-field {
+    display: block;
+}
+
+.modal-warning .titulo{
+    font-size: 24px;
+    font-family: 'Roboto';
+    color:#FFAA53;
+    margin-top: 20px;
+}
+
+.modal-warning  .sub-titulo{
+    font-size: 16px;
+    font-family: 'Roboto';
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+ .modal-warning .mat-dialog-container { 
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .modal-warning .mat-dialog-content { 
+    margin: 0;
+    text-align: center;
+  }
+
+  .modal-warning .title-center {
+    margin: 0 auto;
+  }
+  
+  .modal-warning .mat-dialog-actions { 
+    margin-bottom: 0px !important;
+    padding: 20px 30px;
+  }
+
+  .modal-warning .mat-toolbar {
+    height: 100px;
+  }
+
+  .modal-warning .mat-icon {
+    color: #FFF; 
+    width: 56px;
+    height: 56px;
+    font-size: 56px;
+}
+.modal-warning button.mat-raised-button.mat-accent {
+    color:#FFF
+    // color: #ffab40;
+    //  box-shadow: 1px 1px 0px 0px #ffab40, -1px 0px 0px 0 #ffab40, 0px -1px 0px 0px #ffab40;
+}

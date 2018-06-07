@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto Condensed|Source Sans Pro|Meera Inimai|Raleway');
+
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 @import './styles.custom-theme.scss';
+/**/
+@import './app/pages/dashboard/dashboard.component.scss';
+@import './app/pages/categorias/categorias.component.scss';
+
+@import './app/layout/dialogs/exclusao/exclusao-dialog.component.scss';
 
 html, body {
     height: 100%;
@@ -14,54 +21,27 @@ html, body {
     color: white;
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 16px;
-    z-index: 2;
-}
-
-.main-body {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 100px;
+    font-size: 20px;
+     z-index: 4;
 }
 
 .button-row {
     display: flex;
     align-items: left;
-    // justify-content: space-around;
   }
-
-  .modal-warning .mat-dialog-container { 
-    padding: 0;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .modal-warning .mat-dialog-content { 
-    margin: 0;
-    text-align: center;
-  }
-
-  .modal-warning .title-center {
-    margin: 0 auto;
-  }
-  
-  .modal-warning .mat-dialog-actions { 
-    margin-bottom: 0px !important;
-    padding: 20px 30px;
-  }
-
-  .modal-warning .mat-toolbar {
-    height: 100px;
-  }
-
-  .modal-warning .mat-icon {
-    color: #FFF; 
-    width: 56px;
-    height: 56px;
-    font-size: 56px;
+ 
+  .main-body {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 120px;
 }
-.modal-warning button.mat-raised-button.mat-accent {
-    color:#FFF
-    // color: #ffab40;
-    //  box-shadow: 1px 1px 0px 0px #ffab40, -1px 0px 0px 0 #ffab40, 0px -1px 0px 0px #ffab40;
-}
+  .custom-nav-bar {
+    z-index:3; 
+    position: 
+    fixed; margin-top:45px
+  }
+  .custom-nav-bar-row {
+    margin-top:20px;
+    font-size:13px; 
+    font-family:'Roboto'
+  }

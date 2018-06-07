@@ -32,6 +32,16 @@ export class CategoriaService {
         .pipe(map((res: any) => res.data));
   }
 
+  salvarCategoria(categoria: Categoria): Observable<Categoria> {
+     return this.http.post(this.config.apiUrl + '/categoria', { Nome: categoria.nome } )
+     .pipe(map((res: any) => res));
+  }
+
+  atualizarCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.put(this.config.apiUrl + '/categoria', categoria)
+    .pipe(map((res: any) => res));
+ }
+
   deleteCategoria(id): Observable<any> {
 
     const params = new HttpParams()

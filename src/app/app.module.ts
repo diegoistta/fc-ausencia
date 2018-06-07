@@ -27,6 +27,7 @@ import { JwtInterceptor } from '@app/_interceptors/auth.jwt.interceptor';
 
 import { AppConfig } from '@app/app.config';
 import 'moment/locale/pt-br';
+import { EditarCategoriaComponent } from './layout/dialogs/editar-categoria/editar-categoria.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import 'moment/locale/pt-br';
     HeaderComponent,
     SidenavComponent,
     CategoriasComponent,
-    ExclusaoDialogComponent
+    ExclusaoDialogComponent,
+    EditarCategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,9 @@ import 'moment/locale/pt-br';
     }
    ],
   bootstrap: [AppComponent],
-  entryComponents: [ExclusaoDialogComponent]
+  entryComponents: [
+    ExclusaoDialogComponent,
+    EditarCategoriaComponent
+  ]
 })
 export class AppModule { }

@@ -10,14 +10,14 @@ import { LoggedGuard } from '@app/_guards/logged.guard';
 import { CategoriasComponent } from '@app/pages/categorias/categorias.component';
 
 const routes: Routes = [
-   { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
-    //  { path: '', component: MainComponent, children:[
+  //  { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
+     { path: '', component: MainComponent, children:[
       { path: 'dashboard', component: DashboardComponent },
       { path: '',   redirectTo: '/dashboard', pathMatch: 'full' },
       { path: 'categorias', component: CategoriasComponent }
   ] },
-    { path: 'login', component: LoginComponent, canActivate: [LoggedGuard] },
-  // { path: 'login', component: LoginComponent },
+    // { path: 'login', component: LoginComponent, canActivate: [LoggedGuard] },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];
 

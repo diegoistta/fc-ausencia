@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
 import { Categoria } from '@app/_model/categoria';
 
@@ -10,17 +10,17 @@ import { Inject } from '@angular/core';
 
 import { CategoriaService } from '@app/_services/categoria.service';
 import { ExclusaoDialogComponent } from '@app/layout/dialogs/exclusao/exclusao-dialog.component';
+import { EditarCategoriaComponent } from '@app/layout/dialogs/editar-categoria/editar-categoria.component';
 
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
-  styleUrls: ['./categorias.component.css']
+  styleUrls: ['./categorias.component.scss']
 })
 
-export class CategoriasComponent implements OnInit {
+export class CategoriasComponent implements OnInit, AfterViewInit {
 
   dataSource: CategoriaDataSource;
-  categoria: string;
 
   displayedColumns = ['nome', 'dataCriacao', 'dataAlteracao', 'opcoes'];
   searchColumns = ['nome'];
@@ -51,9 +51,8 @@ export class CategoriasComponent implements OnInit {
               tap(() => {
                   this.paginator.pageIndex = 0;
                   this.loadCategoriasPage();
-            })
-        )
-        .subscribe();
+                })
+            ).subscribe();
 
     merge(this.sort.sortChange, this.paginator.page)
     .pipe(
@@ -61,7 +60,67 @@ export class CategoriasComponent implements OnInit {
     ).subscribe();
   }
 
-  openDialog(row) {
+
+  criarDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    dialogConfig.panelClass = 'modal-edit-single';
+    dialogConfig.data = {
+      descricao: 'Criar Categoria',
+      id: 0,
+      nome: ''
+    };
+
+    const dialogRef = this.dialog.open(EditarCategoriaComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      (data: Categoria) => {
+          if (data) {
+            this.categoriaService.salvarCategoria(data).pipe(
+              tap(() => this.loadCategoriasPage())
+           ).subscribe();
+        }
+      }
+    );
+  }
+
+  editarDialog(row) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    dialogConfig.panelClass = 'modal-edit-single';
+    dialogConfig.data = {
+        descricao: 'Editar Categoria',
+        id: row.id,
+        nome: row.nome
+      };
+
+    const dialogRef = this.dialog.open(EditarCategoriaComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      (data: Categoria) => {
+          if (data) {
+
+            if (row.id) {
+              this.categoriaService.atualizarCategoria(data).pipe(
+                tap(() => this.loadCategoriasPage())
+             ).subscribe();
+            } else {
+              this.categoriaService.salvarCategoria(data).pipe(
+                tap(() => this.loadCategoriasPage())
+             ).subscribe();
+            }
+        }
+      }
+    );
+  }
+
+  excluirDialog(row) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -74,7 +133,7 @@ export class CategoriasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: any) => {
           if (data) {
-           this.categoriaService.deleteCategoria(row['id']).pipe(
+            this.categoriaService.deleteCategoria(row['id']).pipe(
               tap(() => this.loadCategoriasPage())
            ).subscribe();
         }
@@ -91,5 +150,4 @@ export class CategoriasComponent implements OnInit {
         this.paginator.pageIndex,
         this.paginator.pageSize);
   }
-
 }
