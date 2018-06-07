@@ -44,7 +44,6 @@ export class CategoriaDataSource implements DataSource<Categoria> {
     }
 
     connect(collectionViewer: CollectionViewer): Observable<Categoria[]> {
-        console.log('Connecting data source');
         return this.categoriaSubject.asObservable();
     }
 

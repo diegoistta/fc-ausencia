@@ -33,7 +33,7 @@ export class CategoriaService {
   }
 
   salvarCategoria(categoria: Categoria): Observable<Categoria> {
-     return this.http.post(this.config.apiUrl + '/categoria', { Nome: categoria.nome } )
+     return this.http.post(this.config.apiUrl + '/categoria', categoria )
      .pipe(map((res: any) => res));
   }
 

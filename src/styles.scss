@@ -16,7 +16,7 @@ html, body {
     background: #EFEEF4; }
 
 .content-title{
-    position: fixed; 
+    position: fixed;
     background: #36414F;
     color: white;
     font-family: 'Roboto';
@@ -29,19 +29,20 @@ html, body {
     display: flex;
     align-items: left;
   }
- 
+
   .main-body {
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 120px;
 }
   .custom-nav-bar {
-    z-index:3; 
-    position: 
+    z-index:3;
+    position:
     fixed; margin-top:45px
   }
   .custom-nav-bar-row {
-    margin-top:20px;
-    font-size:13px; 
+    margin-top:15px;
+    font-size:13px;
+    font-weight: 200;
     font-family:'Roboto'
   }

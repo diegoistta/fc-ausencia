@@ -21,6 +21,7 @@ import { EditarCategoriaComponent } from '@app/layout/dialogs/editar-categoria/e
 export class CategoriasComponent implements OnInit, AfterViewInit {
 
   dataSource: CategoriaDataSource;
+  load = false;
 
   displayedColumns = ['nome', 'dataCriacao', 'dataAlteracao', 'opcoes'];
   searchColumns = ['nome'];
@@ -79,8 +80,10 @@ export class CategoriasComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(
       (data: Categoria) => {
           if (data) {
+            this.load = true;
             this.categoriaService.salvarCategoria(data).pipe(
-              tap(() => this.loadCategoriasPage())
+
+              tap(() => { this.load = false; this.loadCategoriasPage(); })
            ).subscribe();
         }
       }
@@ -142,6 +145,7 @@ export class CategoriasComponent implements OnInit, AfterViewInit {
   }
 
   loadCategoriasPage() {
+    this.load = false;
     this.dataSource.getCategorias(
         this.input.nativeElement.value,
         this.searchColumns,

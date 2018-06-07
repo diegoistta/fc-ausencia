@@ -2,24 +2,25 @@
     Categorias de Afastamento
 </mat-toolbar>
 <mat-toolbar class="custom-nav-bar">
+
   <div class="custom-nav-bar-row">
-      <button mat-icon-button color="primary" (click)="criarDialog(null)">
-      <mat-icon tooltip="Adicionar Categoria">add_circle</mat-icon>
+      <button mat-button tooltip="Adicionar Categoria" (click)="criarDialog()">
+      <mat-icon color="primary" >add_circle</mat-icon>
+      Adicionar Categoria
     </button>
-    <span>
-     Adicionar Categoria
-    </span>
   </div>
-    
+
 </mat-toolbar>
 
+
 <div class="main-body">
+
   <mat-form-field>
     <input matInput placeholder="Filtro" #input>
   </mat-form-field>
 
-  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
-    <mat-spinner style="margin:0 auto;"></mat-spinner>
+  <div class="spinner-container" *ngIf="(dataSource.loading$ | async) || load" >
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
 
   <div class="mat-elevation-z8">
@@ -47,9 +48,9 @@
       <!-- Data de Alteração Column -->
       <ng-container matColumnDef="dataAlteracao">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Alteração </th>
-        <td mat-cell *matCellDef="let row"> {{row.dataAlteracao == null ? 'sem alteração' : ( row.dataAlteracao | amLocal | amDateFormat: 'D/MM/YYYY')}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.dataAlteracao == null ? 'sem alteração' : ( row.dataAlteracao | amLocal:'pt-br' | amDateFormat: 'D MMMM YYYY')}} </td>
       </ng-container>
-      
+
       <!-- Opções Column -->
       <ng-container matColumnDef="opcoes">
         <th mat-header-cell *matHeaderCellDef class="opcoes-column">Opções</th>
