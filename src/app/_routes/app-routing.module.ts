@@ -8,13 +8,15 @@ import { DashboardComponent } from '@app/pages/dashboard/dashboard.component';
 import { AuthGuard } from '@app/_guards/auth.guard';
 import { LoggedGuard } from '@app/_guards/logged.guard';
 import { CategoriasComponent } from '@app/pages/categorias/categorias.component';
+import { TipoAfastamentoComponent } from '@app/pages/tipo-afastamento/tipo-afastamento.component';
 
 const routes: Routes = [
   //  { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
-     { path: '', component: MainComponent, children:[
+     { path: '', component: MainComponent, children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: '',   redirectTo: '/dashboard', pathMatch: 'full' },
-      { path: 'categorias', component: CategoriasComponent }
+      { path: 'categorias', component: CategoriasComponent },
+      { path: 'tiposafastamento', component: TipoAfastamentoComponent }
   ] },
     // { path: 'login', component: LoginComponent, canActivate: [LoggedGuard] },
   { path: 'login', component: LoginComponent },

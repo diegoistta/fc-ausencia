@@ -27,7 +27,8 @@ import { JwtInterceptor } from '@app/_interceptors/auth.jwt.interceptor';
 
 import { AppConfig } from '@app/app.config';
 import 'moment/locale/pt-br';
-import { EditarCategoriaComponent } from './layout/dialogs/editar-categoria/editar-categoria.component';
+import { EditarCategoriaComponent } from '@app/layout/dialogs/editar-categoria/editar-categoria.component';
+import { TipoAfastamentoComponent } from '@app/pages/tipo-afastamento/tipo-afastamento.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { EditarCategoriaComponent } from './layout/dialogs/editar-categoria/edit
     SidenavComponent,
     CategoriasComponent,
     ExclusaoDialogComponent,
-    EditarCategoriaComponent
+    EditarCategoriaComponent,
+    TipoAfastamentoComponent
   ],
   imports: [
     BrowserModule,

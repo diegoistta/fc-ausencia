@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { SidenavService } from '@app/_services/sidenav.service';
 import { MatSidenav } from '@angular/material';
 
@@ -7,7 +7,7 @@ import { MatSidenav } from '@angular/material';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
 
   @ViewChild('sidenav') public sidenav: MatSidenav;
   folders = [
@@ -20,13 +20,12 @@ export class SidenavComponent {
       name: 'Categorias',
       icon: 'assignment',
       link: ['/categorias']
-      
     },
-    // {
-    //   name: 'Tipos de Afastamento',
-    //   icon: 'insert_invitation',
-    //   link: ['/tiposafastamento']
-    // }
+    {
+      name: 'Tipos de Afastamento',
+      icon: 'insert_invitation',
+      link: ['/tiposafastamento']
+    }
   ];
 
   constructor(private sidenavService: SidenavService) {	}
